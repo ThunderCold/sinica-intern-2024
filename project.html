@@ -1,0 +1,582 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>以 YAML 格式生成 Table Schema 描述 &#8212; 2024 Intern Project</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'project';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="2024 Intern Project - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="2024 Intern Project - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">實習作業</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="open-source-project.html">開源社群專案作業 - Django</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openstreetmap.html">OpenStreetMap 作業</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wikidata.html">Wikidata 作業</a></li>
+<li class="toctree-l1"><a class="reference internal" href="360-degree.html">360° photos and videos 全景攝影作業</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ThunderCold/sinica-intern-2024" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ThunderCold/sinica-intern-2024/issues/new?title=Issue%20on%20page%20%2Fproject.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/project.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>以 YAML 格式生成 Table Schema 描述</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frictionless">使用 frictionless 套件</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gemini-constraints-property">使用 Gemini 模型填入 constraints property</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="yaml-table-schema">
+<h1>以 YAML 格式生成 Table Schema 描述<a class="headerlink" href="#yaml-table-schema" title="Link to this heading">#</a></h1>
+<section id="frictionless">
+<h2>使用 frictionless 套件<a class="headerlink" href="#frictionless" title="Link to this heading">#</a></h2>
+<p>依照使用者上傳的資料集檔案（data.csv），使用 Frictionless 套件中的 Schema.describe() 功能生成資料集規範（schema.yaml）。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>資料集檔案（data.csv）格式限制：<br>
+第一列為各欄位之 name，其餘每一列皆為一筆資料。</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">frictionless</span> <span class="kn">import</span> <span class="n">Schema</span>
+
+<span class="n">yaml_filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_filename</span><span class="si">}</span><span class="s1">.schema.yaml&#39;</span> <span class="c1"># 將資料集規範命名為 資料集名稱 + .schema.yaml</span>
+<span class="n">schema</span> <span class="o">=</span> <span class="n">Schema</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">data_filename</span><span class="p">)</span>
+<span class="n">schema</span><span class="o">.</span><span class="n">to_yaml</span><span class="p">(</span><span class="n">yaml_filename</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">description_filename</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">yaml_filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">csv_reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">)</span>
+            <span class="n">listReport</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">csv_reader</span><span class="p">)</span>
+            <span class="n">yaml_data</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">yaml_data</span><span class="p">[</span><span class="s1">&#39;fields&#39;</span><span class="p">])):</span>
+                <span class="n">yaml_data</span><span class="p">[</span><span class="s1">&#39;fields&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">listReport</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+                <span class="n">yaml_data</span><span class="p">[</span><span class="s1">&#39;fields&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;description&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">listReport</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">yaml_filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">yaml_data</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="gemini-constraints-property">
+<h2>使用 Gemini 模型填入 constraints property<a class="headerlink" href="#gemini-constraints-property" title="Link to this heading">#</a></h2>
+<p>但因由 Schema.describe() 功能生成的資料集規範僅包含 name 與 type 兩個property，無法有效進行資料集驗證功能。因此，依照使用者上傳的資料欄位說明檔案（description.csv），將其內容填充至資料集規範（schema.yaml）中，並且使用大型語言模型判斷各欄位之constraints property內容。</p>
+<p>這裡使用的大型語言模型為 Google Gemini 中的 gemini-1.5-flash，使用者可先申請免費 API，並將 API Key 填入應用程式欄位中。在選定資料集檔案（data.csv）與資料欄位說明檔案（description.csv）後，程式會自動連接 Gemini 模型，並且詢問每個資料欄位的理論最小值與最大值，若模型輸出結果有最小值或最大值，就會將該值填入資料集規範（schema.yaml）中；否則，若模型輸出為 Null（意即無法判斷）最小值或最大值，則會跳過填入該欄位。</p>
+<p>免費版gemini-1.5-flash模型API的使用限制為：15 requests per minute，1500 requests per day。為避免瞬間使用過多資源導致出現ResourceExhausted錯誤，偵測每個欄位進行生成會有一段間隔時間（目前設定為7秒）。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>資料欄位說明檔案（description.csv）格式限制：<br>
+第一列為各欄位之 name，第二列為各欄位之 title，第三列為各欄位之 description，第四列為各欄位之 type。</p>
+</div>
+<ul class="simple">
+<li><p>用以詢問 Gemini 模型的文本：</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>name: &lt;name&gt;\ntitle: &lt;title&gt;\ndescription: &lt;description&gt;\ntype: &lt;type&gt;\n\nThe above is the description of a data field. What is the maximum reasonable real-world value ​​for this data field? Please output this value ​​directly without any additional explanation. If the maximum reasonable real-world value ​​cannot be determined, &quot;Null&quot; is output.
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>name: &lt;name&gt;\ntitle: &lt;title&gt;\ndescription: &lt;description&gt;\ntype: &lt;type&gt;\n\nThe above is the description of a data field. What is the minimum reasonable real-world value ​​for this data field? Please output this value ​​directly without any additional explanation. If the minimum reasonable real-world value ​​cannot be determined, &quot;Null&quot; is output.
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">google.generativeai</span> <span class="k">as</span> <span class="nn">genai</span>
+
+<span class="k">def</span> <span class="nf">askGemini</span><span class="p">():</span>
+    
+    <span class="n">genai</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">api_key</span> <span class="o">=</span> <span class="n">api_key</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">genai</span><span class="o">.</span><span class="n">GenerativeModel</span><span class="p">(</span><span class="s1">&#39;gemini-1.5-flash&#39;</span><span class="p">)</span>
+
+    <span class="n">max_question</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;name: </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="se">\n</span><span class="s1">title: </span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="se">\n</span><span class="s1">description: </span><span class="si">{</span><span class="n">description</span><span class="si">}</span><span class="se">\n</span><span class="s1">type: </span><span class="si">{</span><span class="nb">type</span><span class="si">}</span><span class="se">\n\n</span><span class="s1">The above is the description of a data field. What is the maximum reasonable real-world value ​​for this data field? Please output this value ​​directly without any additional explanation. If the maximum reasonable real-world value ​​cannot be determined, &quot;Null&quot; is output.&#39;</span>
+    <span class="n">max_response</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate_content</span><span class="p">(</span>
+        <span class="n">contents</span><span class="o">=</span><span class="n">max_question</span><span class="p">,</span>
+        <span class="n">safety_settings</span><span class="o">=</span><span class="n">s_settings</span>
+    <span class="p">)</span>
+    <span class="n">min_question</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;name: </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="se">\n</span><span class="s1">title: </span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="se">\n</span><span class="s1">description: </span><span class="si">{</span><span class="n">description</span><span class="si">}</span><span class="se">\n</span><span class="s1">type: </span><span class="si">{</span><span class="nb">type</span><span class="si">}</span><span class="se">\n\n</span><span class="s1">The above is the description of a data field. What is the minimum reasonable real-world value ​​for this data field? Please output this value ​​directly without any additional explanation. If the minimum reasonable real-world value ​​cannot be determined, &quot;Null&quot; is output.&#39;</span>
+    <span class="n">min_response</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate_content</span><span class="p">(</span>
+        <span class="n">contents</span><span class="o">=</span><span class="n">min_question</span><span class="p">,</span>
+        <span class="n">safety_settings</span><span class="o">=</span><span class="n">s_settings</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">max_response</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="n">min_response</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>在使用 Gemini 模型填入 constraints property 時，應用程式介面中的 System Messege 欄位會顯示系統資訊，預期中有可能會看到以下資訊：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">&lt;yaml_filename&gt;</span> <span class="pre">sucessfully</span></code>：成功使用 Schema.describe() 功能生成資料集規範（schema.yaml）。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Detecting</span> <span class="pre">&lt;name&gt;</span> <span class="pre">field...</span></code>：正在使用模型生成 <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> 欄位之理論最小值與最大值。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span> <span class="pre">field:\nminimum:&lt;min&gt;,</span> <span class="pre">maximum:&lt;max&gt;</span></code>：已經完成 <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> 欄位之檢測，模型生成之理論最小值為 <code class="docutils literal notranslate"><span class="pre">&lt;min&gt;</span></code>，理論最大值為 <code class="docutils literal notranslate"><span class="pre">&lt;max&gt;</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ResourceExhausted</span> <span class="pre">error</span> <span class="pre">occurred,</span> <span class="pre">will</span> <span class="pre">automatically</span> <span class="pre">retry</span></code>：超過API資源使用限制，在額外等候一段間隔時間後將自動重試。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Multiple</span> <span class="pre">ResourceExhausted</span> <span class="pre">errors</span> <span class="pre">occurred,</span> <span class="pre">terminating</span> <span class="pre">AI</span> <span class="pre">detection</span></code>：多次嘗試後仍超過API資源使用限制，將自動中斷模型生成。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">InvalidArgument</span> <span class="pre">error</span> <span class="pre">occurred,</span> <span class="pre">please</span> <span class="pre">check</span> <span class="pre">API</span> <span class="pre">key</span></code>：API Key 可能有錯誤。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Unexpected</span> <span class="pre">error</span> <span class="pre">occurred</span></code>：Gemini 模型生成過程出現非預期錯誤。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AI</span> <span class="pre">detection</span> <span class="pre">completed</span></code>：已經完成該資料集規範（schema.yaml）之Gemini 模型生成。</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frictionless">使用 frictionless 套件</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gemini-constraints-property">使用 Gemini 模型填入 constraints property</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Henry Tseng
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
