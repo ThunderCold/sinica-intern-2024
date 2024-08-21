@@ -1,16 +1,48 @@
-# 修改 YAML 檔案
+# Modify dataset specification file
 
-## 簡介
+## Introduction
 
-在使用 Schema.describe() 功能與大型語言模型自動填入 constraints property 中的最小值與最大值後，由於此時資料集規範（schema.yaml）中的規範尚不一定為研究所需，所以需要對此進行修正。修改資料集規範（schema.yaml）最快的方式為直接打開此YAML檔案，並且對需要修改的欄位手動修正。不過，考量並不是所有研究人員都熟悉YAML檔案的格式，且直接修改YAML檔案仍有可能因粗心造成筆誤，因此這裡開發了一個可讓使用者方便修改資料集規範（schema.yaml）各欄位值的介面工具。
+在使用 Schema.describe() 功能與大型語言模型自動填入 constraints property 中的最小值與最大值後，由於此時資料集規範（schema.yaml）中的規範尚不一定為研究所需，所以需要對此進行修正。修改資料集規範（schema.yaml）最快的方式為直接打開此YAML檔案，並且對需要修改的欄位手動修正。不過，考量到並不是所有研究人員都熟悉YAML檔案的格式，且直接修改YAML檔案仍有可能因粗心造成錯誤，因此這裡開發了一個可讓使用者方便修改資料集規範（schema.yaml）各欄位值的介面工具。
 
-## 1
+After using the `Schema.describe()` function with the large language model to auto-fill the reasonable minimum and maximum values in the `constraints` property, it is necessary to correct the properties in the dataset specification as they may not be completely correct for the research. The fastest way to modify the dataset specification is to open the YAML file and manually modify the fields that need to be fix.
 
-在選取欲修正的YAML檔案後，即會載入各欄位之資料至使用者介面，使用者可使用上一頁與下一頁按鈕查看各欄位之資料並修正，按下Save按鈕後即會將修正後之資料覆蓋至原檔案上。修正資料集規範（schema.yaml）內容時，內容必須符合[Table Schema](https://datapackage.org/standard/table-schema/)要求。
+However, considering that not all researchers are familiar with the format of the YAML file, and that direct modification of the YAML file may still cause errors due to carelessness, an interface tool has been developed to allow users to easily modify the values of the dataset specification fields.
 
-### Field Constraints 要求
+## Modify data in each field
 
-| Constraints property |說明| Type | Fields |
+在選取欲修正的dataset specification file後，即會載入各欄位之資料至使用者介面，程式會將檔案轉為一個Python字典。使用者可使用上一頁與下一頁按鈕查看各欄位之資料並修正，程式會將更改後的資料儲存回字典中。當使用者按下Save按鈕，程式即會將字典內的資料覆蓋至原檔案上。
+
+After selecting the dataset specification file to be modified, the data of each field will be loaded into the user interface, and the program will convert the file into a Python dictionary. Users can use the `previous page` and `next page` buttons to view and modify each property, and the program will save the changed back to the dictionary. When the user presses the `Save` button, the program will overwrite the data in the dictionary onto the original file.
+
+```python
+import yaml
+
+global yaml_data
+data_filename = 'data.csv'
+yaml_filename = f'{data_filename}.schema.yaml'
+
+with open(yaml_filename, 'r', encoding='utf-8') as file:
+    yaml_data = yaml.safe_load(file)
+```
+
+在此介面工具中，使用者可以修改資料集規範中每個欄位的title、type、format、description、constraints屬性，所有內容必須符合[Table Schema](https://datapackage.org/standard/table-schema/)要求。
+
+In this interface tool, users can modify the `title`, `type`, `format`, `description`, and `constraints` properties of each field in the dataset specification. All content must comply with [Table Schema](https://datapackage.org/standard/table-schema/) requirements.
+
+### Content of each property
+
+| Property | Content |
+| -------- | -------- |
+| `name` | The field descriptor must contain a `name` property and it must be unique amongst other field names in the Table Schema. |
+| `title` | A human readable label or title for the field |
+| `type` | A string indicating the type of this field. |
+| `format` | A string indicating a format for the field type. |
+| `description` | A description for the field. |
+| `constraints` | Used to list constraints for validating field values. |
+
+### `constraints` property requirements
+
+| `constraints` property | Content | Type | Fields |
 | -------- | -------- | -------- | -------- |
 | `required` | Indicates whether this field cannot be `null`. | boolean | all |
 | `unique` | If `true`, then all values for that field must be unique within the data file in which it is found. | boolean | all |
