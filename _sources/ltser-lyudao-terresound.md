@@ -1,4 +1,4 @@
-# LTSER Lyudao 陸域聲景監測-調查事件
+# TerreSound Dataset Validation
 
 ## Dataset
 
@@ -8,7 +8,9 @@
 - [陸域聲景監測_2023年9-11月](https://data.depositar.io/dataset/ltser-lyudao-terresound/resource/f21a9b05-2e63-4c6b-ab8d-34aad6b8f968)
 - [陸域聲景監測_2023年12月-2024年2月](https://data.depositar.io/dataset/ltser-lyudao-terresound/resource/ad95d69e-479e-4728-a384-f11442736c55)
 
-## Generate dataset specification
+## Dataset specification
+
+[LTSER Lyudao 陸域聲景監測-調查事件 - 資料集規範](https://data.depositar.io/dataset/ltser-dataset-specification/resource/dbcfefec-67be-4b3e-b154-c4e7017c72e0)
 
 ## Validation result
 

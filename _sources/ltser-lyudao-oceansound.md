@@ -1,4 +1,4 @@
-# 水下聲景調查事件資料集驗證
+# OceanSound Dataset Validation
 
 ## Dataset
 
@@ -6,7 +6,7 @@
 
 Because the field does not match the field description file of this dataset, the last column of the data set is deleted before processing.
 
-## Generate dataset specification
+## Dataset specification
 
 [LTSER Lyudao 珊瑚礁水下聲景調查資料 - 資料集規範](https://data.depositar.io/dataset/ltser-dataset-specification/resource/f4f14b7a-dd5c-44c3-8cf4-561047321304)
 
