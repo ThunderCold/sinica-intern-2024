@@ -1,4 +1,4 @@
-# Modify dataset specification file
+# Modify Dataset Specification File
 
 ## Introduction
 
@@ -22,6 +22,8 @@ with open(yaml_filename, 'r', encoding='utf-8') as file:
 ```
 
 In this interface tool, users can modify the `title`, `type`, `format`, `description`, and `constraints` properties of each field in the dataset specification. All content must comply with [Table Schema](https://datapackage.org/standard/table-schema/) requirements.
+
+![](_static/modify_specification.png)
 
 ### Content of each property
 

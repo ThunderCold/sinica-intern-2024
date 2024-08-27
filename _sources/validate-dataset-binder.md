@@ -1,4 +1,4 @@
-# Validate dataset in Binder service
+# Validate the Dataset in Binder Service
 
 >Binder is an online service for building and running computational environments in the browser, which can be used to reproduce and demonstrate research results hosted by code repositories.
 >

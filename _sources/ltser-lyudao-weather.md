@@ -10,4 +10,10 @@
 
 ## Validation result
 
-123
+The validation result shows "There are 1000 errors in the dataset." (In fact, there should be over 1000 errors.)
+
+The first error is `Constraint Error`. In row at position 746 of field "SolarRadiation", the value is 1276.9. However, according to the dataset specification, the maximum value set for this field is 1100.0, so an error message appears.
+
+The following errors are all `Type Error`. In the "WindSpeed", "GustSpeed", and "precipitation" fields, there are values that appear as "NA", which does not match the "number" type of these fields, so errors occur.
+
+![](_static/weather.png)

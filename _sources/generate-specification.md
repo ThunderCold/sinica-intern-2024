@@ -1,4 +1,4 @@
-# Generate dataset specification in YAML format
+# Generate Dataset Specification in YAML Format
 
 ## Use the Frictionless package
 
@@ -87,3 +87,5 @@ When using the Google Gemini model to fill in the `constraints` property, the `S
 - `InvalidArgument error occurred, please check API key`: The API Key provided by the user may be incorrect.
 - `Unexpected error occurred`: An unexpected error occurred during the Google Gemini model generation process.
 - `AI detection completed`: The Gemini model generation of the dataset specification has been completed.
+
+![](_static/generate_specification.png)

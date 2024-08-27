@@ -1,4 +1,4 @@
-# Validate the dataset
+# Validate the Dataset
 
 ## Validation of dataset specification
 
@@ -42,3 +42,6 @@ else:
 
 for i in range(error_num):
     print(f'{data_report.tasks[0].errors[i].title}:\n{data_report.tasks[0].errors[i].message}')
+```
+
+![](_static/validate_dataset.png)
