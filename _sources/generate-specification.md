@@ -46,7 +46,7 @@ The large language model used here is `gemini-1.5-flash` in Google Gemini. Users
 
 The usage limit of the free version `gemini-1.5-flash` model API is: 15 requests per minute, 1500 requests per day. In order to avoid `ResourceExhausted` errors caused by using too many resources in an instant, there will be an interval between detecting and generating each field (currently set to 7 seconds).
 
-If you do not want to use the Google Gemini model to generate the `constraints` property, just uncheck the `Use Gemini AI` checkbox. The program will only generate the dataset specification based on the dataset file and data field specification file.
+If you do not want to use the Google Gemini model to generate the `constraints` property, just uncheck the `Use Gemini AI` checkbox. The program will only generate the dataset specification based on the dataset file and data field description file.
 
 - Text to query the Google Gemini model:
 ```

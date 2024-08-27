@@ -30,7 +30,7 @@ In this interface tool, users can modify the `title`, `type`, `format`, `descrip
 | Property | Content |
 | -------- | -------- |
 | `name` | The field descriptor must contain a `name` property and it must be unique amongst other field names in the Table Schema. |
-| `title` | A human readable label or title for the field |
+| `title` | A human readable label or title for the field. |
 | `type` | A string indicating the type of this field. |
 | `format` | A string indicating a format for the field type. |
 | `description` | A description for the field. |

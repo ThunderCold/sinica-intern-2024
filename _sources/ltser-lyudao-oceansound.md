@@ -4,7 +4,9 @@
 
 - [水下聲景調查事件資料表](https://data.depositar.io/dataset/ltser-lyudao-oceansound/resource/835b9da9-9b56-4a19-9667-73f81e5eb0a1)
 
-Because the field does not match the field description file of this dataset, the last column of the data set is deleted before processing.
+```{note}
+Because the field does not match the field description file of this dataset, the last column is deleted before processing.
+```
 
 ## Dataset specification
 

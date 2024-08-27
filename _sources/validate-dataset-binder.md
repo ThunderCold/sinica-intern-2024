@@ -9,7 +9,7 @@
 In addition to using the Data Validation Tool to validate the quality of the dataset, users can also upload the modified validation program together with the dataset when using the depositar. After opening the Binder service, the validation program can be used to validate the dataset.
 
 ```{note}
-The validation program uploaded to the Binder service only has the function of dataset validation and does not include the generation and modification of the dataset specification. Users need to complete the preparation of the dataset specification in advance and upload it to the data set together.
+The validation program uploaded to the Binder service only has the function of dataset validation and does not include the generation and modification of the dataset specification. Users need to complete the preparation of the dataset specification in advance and upload it to the dataset together.
 ```
 
 ## Implementation
