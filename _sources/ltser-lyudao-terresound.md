@@ -10,7 +10,7 @@
 
 ## Dataset specification
 
-[LTSER Lyudao 陸域聲景監測-調查事件 - 資料集規範](https://data.depositar.io/dataset/ltser-dataset-specification/resource/dbcfefec-67be-4b3e-b154-c4e7017c72e0)
+- [LTSER Lyudao 陸域聲景監測-調查事件 - 資料集規範](https://data.depositar.io/dataset/ltser-dataset-specification/resource/dbcfefec-67be-4b3e-b154-c4e7017c72e0)
 
 ## Validation result
 

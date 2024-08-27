@@ -9,7 +9,7 @@
 
 ## Dataset specification
 
-[LTSER Lyudao 陸域聲景監測-聲音指數 - 資料集規範](https://data.depositar.io/dataset/ltser-dataset-specification/resource/6ef30f8f-cb52-4fa6-b768-8e0ee2f8a145)
+- [LTSER Lyudao 陸域聲景監測-聲音指數 - 資料集規範](https://data.depositar.io/dataset/ltser-dataset-specification/resource/6ef30f8f-cb52-4fa6-b768-8e0ee2f8a145)
 
 ## Validation result
 
