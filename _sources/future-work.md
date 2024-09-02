@@ -10,4 +10,4 @@ In addition, the generation of `constraints` fields is currently limited to the 
 
 ## Improve the UI of Data Validation Tool
 
-We can improve the interface of the Data Validation Tool in the future to make it more aesthetically pleasing. In this tool, we can also  add more necessary system messege fields, so that the user can be more clearly informed of the current state of the program.
+We can improve the interface of the Data Validation Tool in the future to make it more aesthetically pleasing. In this tool, we can also add more necessary system message fields, so that the user can be more clearly informed of the current state of the program.
